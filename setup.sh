@@ -12,14 +12,14 @@ PYTHON=$1
 echo "🐍 Creating virtual environment..."
 "$PYTHON" -m venv .venv
 
-echo "🐍 Updating pip..."
-.venv/bin/pip3 install --upgrade pip
-
 if [ $? -ne 0 ]; then
   echo "❌ Failed to create virtual environment"
   exit 1
 fi
 echo "✅ Virtual environment created at ./.venv"
+
+echo "🐍 Updating pip..."
+.venv/bin/pip3 install --upgrade pip
 
 echo "📦 Installing StaLiX..."
 cd stalix || exit 1
