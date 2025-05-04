@@ -116,14 +116,19 @@ def main():
     print(f"Processed: {total_processed}")
     print(f"Errors: {error_count}")
     print()
+
     print(f"Scores:")
-    print(f">>> Standardized: {total_score[0] / total_processed:.4f}")
-    print(f">>> Reduced: {total_score[1] / total_processed:.4f}")
-    print(f">>> Melody: {total_score[2] / total_processed:.4f}")
-    print(f">>> Contour: {total_score[3] / total_processed:.4f}")
+    if total_processed > 0:
+        print(f">>> Standardized: {total_score[0] / total_processed:.4f}")
+        print(f">>> Reduced: {total_score[1] / total_processed:.4f}")
+        print(f">>> Melody: {total_score[2] / total_processed:.4f}")
+        print(f">>> Contour: {total_score[3] / total_processed:.4f}")
+    else:
+        print("No data available")
     print()
+
     print(f"Time elapsed: {time_elapsed}")
-    if total_processed:
+    if total_processed > 0:
         print(f"Time per image: {time_elapsed / total_processed}")
 
 

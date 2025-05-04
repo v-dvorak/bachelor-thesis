@@ -41,7 +41,7 @@ def run_predictions_single_image(
 
     # noteheads
     notehead_job = InferenceJob(
-        image=cv2.imread(image_path),
+        image=cv2.imread(str(image_path)),
         model_wrapper=notehead_detector,
         # retrieve only full and empty noteheads
         wanted_ids=[0, 1],

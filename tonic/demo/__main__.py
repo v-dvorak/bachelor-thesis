@@ -48,7 +48,7 @@ else:
 if args.layout_detector:
     layout_detector = YOLODetectionModelWrapper(args.layout_detector)
 else:
-    staff_detector = YOLODetectionModelWrapper(get_path_to_latest_version(OLA_TAG))
+    layout_detector = YOLODetectionModelWrapper(get_path_to_latest_version(OLA_TAG))
 
 if args.output_dir:
     args.output_dir = Path(args.output_dir)
@@ -86,14 +86,14 @@ for image_path in tqdm(images_to_process, disable=args.verbose, desc="Running in
     # staff
     staff_job = InferenceJob(
         image=bw_image,
-        model_wrapper=staff_detector,
+        model_wrapper=layout_detector,
         # retrieve only measures and grand staffs
         wanted_ids=[1, 4]
     )
 
     # noteheads
     notehead_job = InferenceJob(
-        image=cv2.imread(image_path),
+        image=cv2.imread(str(image_path)),
         model_wrapper=notehead_detector,
         # retrieve only full and empty noteheads
         wanted_ids=[0, 1],
