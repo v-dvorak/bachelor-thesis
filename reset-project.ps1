@@ -1,4 +1,4 @@
-Set-Location -Path $PSScriptRoot
+﻿Set-Location -Path $PSScriptRoot
 
 Write-Host "🧹 Cleaning project..."
 

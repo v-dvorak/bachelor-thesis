@@ -1,4 +1,4 @@
-# requires PowerShell 5.0+
+﻿# requires PowerShell 5.0+
 param (
     [Parameter(Mandatory = $true)]
     [string]$Python
@@ -16,7 +16,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host "🐍 Updating pip..."
-& .\.venv\Scripts\pip.exe install --upgrade pip
+& .\.venv\Scripts\python.exe -m pip install --upgrade pip
 
 Write-Host "✅ Virtual environment created at .\.venv"
 
@@ -44,3 +44,6 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host "🎉 Done!"
+
+# switch to script directory
+Set-Location -Path $PSScriptRoot
