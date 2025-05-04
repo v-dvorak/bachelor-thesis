@@ -7,7 +7,7 @@ from lmx.linearization.Delinearizer import Delinearizer
 from lmx.linearization.Linearizer import Linearizer
 from lmx.symbolic.MxlFile import MxlFile
 from lmx.symbolic.part_to_score import part_to_score
-from nltk.metrics import edit_distance
+import Levenshtein
 from smashcima import Clef, Event, Note, Score, StaffSemantic, Measure
 
 from .Tokens import G_CLEF_ZERO_PITCH_INDEX, F_CLEF_ZERO_PITCH_INDEX
@@ -79,18 +79,19 @@ class LMXWrapper:
         return _MXMLSimplifier.complex_musicxml_file_to_lmx(musicxml_file)
 
     @staticmethod
-    def normalized_levenstein_distance(predicted: list, ground_truth: list) -> float:
+    def normalized_levenshtein_distance(predicted: list, ground_truth: list) -> float:
         """
-        Returns the normalized Levenstein distance between the tokens
+        Returns the normalized Levenshtein distance between the tokens
         of the predicted and ground truth LMXWrapper instances.
 
-        The total Levenstein distance is divided by the number of tokens in ground truth.
+        The total Levenshtein distance is divided by the number of tokens in ground truth.
 
         :param predicted: predicted LMX
         :param ground_truth: ground truth LMX
-        :return: normalized Levenstein distance
+        :return: normalized Levenshtein distance
         """
-        return edit_distance(predicted, ground_truth) / len(ground_truth)
+        return Levenshtein.distance(predicted, ground_truth) / len(ground_truth)
+        # return edit_distance(predicted, ground_truth) / len(ground_truth)
 
     def to_str(self) -> str:
         return " ".join(self.tokens)

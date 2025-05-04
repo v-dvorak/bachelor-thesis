@@ -10,19 +10,19 @@ def compute_LMX_metrics(predicted_lmx: LMXWrapper, ground_truth_lmx: LMXWrapper)
     :param ground_truth_lmx: LMXWrapper ground truth
     :return: SER of standardized, reduced, melody and contour format
     """
-    standardized = LMXWrapper.normalized_levenstein_distance(
+    standardized = LMXWrapper.normalized_levenshtein_distance(
         predicted_lmx.tokens,
         ground_truth_lmx.tokens
     )
-    reduced = LMXWrapper.normalized_levenstein_distance(
+    reduced = LMXWrapper.normalized_levenshtein_distance(
         predicted_lmx.to_reduced(),
         ground_truth_lmx.to_reduced()
     )
-    melody = LMXWrapper.normalized_levenstein_distance(
+    melody = LMXWrapper.normalized_levenshtein_distance(
         predicted_lmx.to_melody(),
         ground_truth_lmx.to_melody()
     )
-    contour = LMXWrapper.normalized_levenstein_distance(
+    contour = LMXWrapper.normalized_levenshtein_distance(
         predicted_lmx.to_contour(),
         ground_truth_lmx.to_contour()
     )
