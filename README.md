@@ -15,10 +15,13 @@ The project contains three Python libraries:
 
 - [`od-tools`](od-tools/README.md)
     - library and framework designed for handling annotations used as both inputs and outputs in object detection models
+    - developed in a [separate GitHub repo](https://github.com/v-dvorak/od-tools)
 - [`stalix`](stalix/README.md)
     - lightweight library designed for staff line detection, primarily used for refining measure bounding boxes in optical music recognition (OMR) pipelines
+    - developed in a [separate GitHub repo](https://github.com/v-dvorak/stalix)
 - [`tonic`](tonic/README.md)
     - algorithm for converting raw object detections of grand staff, measures and noteheads into structured MusicXML representations
+    - developed in a [separate GitHub repo](https://github.com/v-dvorak/tonic)
 
 ## Usage
 
