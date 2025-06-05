@@ -37,6 +37,16 @@ Or the user can input a custom image:
 python3 -m demo -i <my-image>
 ```
 
+## Visualizing the output with MuseScore
+
+Download MuseScore (tested with version `3.6` and `4.5`) from [the official website](https://musescore.org/) or use an online tool like [SoundSlice](https://www.soundslice.com/musicxml-viewer) (tested in April 2025).
+
+![](docs/olimpic-preview.png)
+
+Input image (top), an example `4919798/p2-s2.png` from the OLiMPiC dataset, and the model prediction rendered using SoundSlice (bottom), SER between the two, using the reduced format, is $4.7\%$.
+
+Keep in mind that majority of MusicXML editors/visualizers tend to stick a chord onto the first staff mentioned inside a concrete note specified inside the chord itself. This means that the notehead can be correctly assigned to a staff and have correctly inferred pitch but still be displayed like it belongs to a different staff. We use MusicXML's chord as a shorcut to create events, so this happens often.
+
 ## Running evaluation
 
 For object detection $F_1$ score refer to the [Object Detection Tools](../od-tools/README.md) project.
