@@ -8,18 +8,35 @@ from ..Conversions.Annotations.FullPage import FullPage
 def _run_split_prediction_job(job: InferenceJob, verbose: bool = False) -> FullPage:
     # get image dimensions
     if isinstance(job.image, np.ndarray):
-        w, h = job.image.shape[:2]
+        h, w = job.image.shape[:2]
     else:
-        w, h = job.image.size
+        h, w = job.image.size
 
+    # check that the image is not smaller in any dimension than the defined window size
+    size_err_occurred = False
+    if w < job.split_settings.width:
+        size_err_occurred = True
+        print(f"Warning: Image width is lower than requested window size, {w} < {job.split_settings.width}.")
+        job.split_settings.width = w
+    if h < job.split_settings.height:
+        size_err_occurred = True
+        print(f"Warning: Image height is lower than requested window size, {h} < {job.split_settings.height}.")
+        job.split_settings.height = h
+
+    if size_err_occurred:
+        if verbose:
+            print(f"Lowering window resolution to {job.split_settings.width}, {job.split_settings.height}")
+
+    # print(job.split_settings.height, job.split_settings.width)
     job.split_settings.update_window_size_based_on_tals(w if w > h else h)
 
     # create splits
     splits = Splitting.create_split_box_matrix(
-        (h, w),
+        (w, h),
         window_size=(job.split_settings.width, job.split_settings.height),
         overlap_ratio=job.split_settings.overlap_ratio
     )
+    # print(*splits[0])
     tiles = Splitting.create_split_images(job.image, splits)
 
     # predict
