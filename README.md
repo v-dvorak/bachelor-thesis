@@ -1,5 +1,14 @@
 # Fast Optical Music Recognition Using the YOLO Platform
 
+
+> ⚠️ **Archived Repository**  
+> This project is no longer maintained and has been archived for reference purposes.  
+>  
+> If you're interested in any of the libraries or the current state of the project, please check out the active repositories:
+> - [Object Detection Tools - `od-tools`](https://github.com/v-dvorak/od-tools)
+> - [Staff Line Extractor - `stalix`](https://github.com/v-dvorak/stalix)
+> - [Tone Identification and Classification - `tonic`](https://github.com/v-dvorak/tonic)
+  
 - Vojtěch Dvořák, Bachelor's thesis, MFF UK, 2025
 - supervised by Mgr. Jiří Mayer
 
@@ -54,3 +63,11 @@ If any other documentation tells you to "setup venv", "install requirements" etc
 - **reset-project** is a script that deletes all files that might be automatically created (by Python or our scripts) during the usage of the script
     - `__pycache__`, `.egg-info`, ...
     - downloaded `models`, `datasets`, `images`, ...
+
+## Changelog
+
+- **2025/06/25** - Fixed bug in staff coordinates normalization in StaLiX, based on the feedback from the defense.
+- **2025/06/20** - Successfully defended.
+- **2025/06/06** - Implemented automatic tile adjustments (for image splitting), after feedback from the opponent.
+- **2025/06/05** - Fixed library versioning, after feedback from the opponent.
+- **2025/05/07** - Submitted for defense.
