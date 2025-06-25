@@ -45,7 +45,8 @@ def staff_space_stddev(staff_y: np.ndarray) -> np.floating:
     :return: normalized std dev
     """
     assert len(staff_y) > 1 and staff_y.ndim == 1
-    normalized = (staff_y - staff_y[0]) / staff_y[-1]
+    b = (staff_y - staff_y[0])
+    normalized = b / b[-1]
     diff = np.diff(normalized)
     return np.std(diff)
 
